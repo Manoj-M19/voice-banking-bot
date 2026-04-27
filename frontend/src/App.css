@@ -1,0 +1,99 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #0a0a0a;
+  color: #f0f0f0;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+header { padding: 18px 20px 14px; border-bottom: 1px solid #1a1a1a; }
+header h1 { font-size: 22px; font-weight: 600; color: #fff; }
+.subtitle { font-size: 13px; color: #555; margin-top: 2px; }
+.latency { font-size: 11px; color: #444; font-family: monospace; margin-top: 6px; }
+.latency .total { color: #1D9E75; font-weight: 600; }
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.empty { color: #444; font-size: 14px; text-align: center; margin-top: 60px; line-height: 1.6; }
+
+.msg { max-width: 82%; }
+.msg.user { align-self: flex-end; text-align: right; }
+.msg.assistant { align-self: flex-start; }
+.who { font-size: 11px; color: #555; display: block; margin-bottom: 4px; }
+
+.msg p {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.msg.user p { background: #1a6cf6; color: #fff; border-bottom-right-radius: 4px; }
+.msg.assistant p { background: #161616; border: 1px solid #222; color: #e8e8e8; border-bottom-left-radius: 4px; }
+
+.cursor {
+  display: inline-block;
+  width: 2px; height: 14px;
+  background: #aaa;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.controls {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.mic {
+  width: 68px; height: 68px;
+  border-radius: 50%;
+  border: 2px solid #2a2a2a;
+  background: #161616;
+  font-size: 26px;
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.mic:not(:disabled):hover { border-color: #444; background: #1e1e1e; }
+
+.mic.rec {
+  background: #1a0000;
+  border-color: #c00;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(204,0,0,0.4); }
+  50% { box-shadow: 0 0 0 10px rgba(204,0,0,0); }
+}
+
+.mic:disabled:not(.rec) { opacity: 0.35; cursor: not-allowed; }
+.status-label { font-size: 12px; color: #555; }
