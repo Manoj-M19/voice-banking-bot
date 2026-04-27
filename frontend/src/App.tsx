@@ -4,7 +4,7 @@ import './App.css'
 type Message = { role: 'user' | 'assistant'; text: string }
 type Status = 'idle' | 'thinking' | 'speaking'
 
-const WS = 'ws://localhost:3001'
+const WS = 'clever-heart-production-ab45.up.railway.app'
 
 export default function App() {
   const [messages, setMessages] = useState<Message[]>([])
